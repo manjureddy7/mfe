@@ -1,0 +1,1 @@
+A simple Micro Frontend using Module Federation from Webpack
