@@ -7,11 +7,11 @@ const commonConfig = require('./webpack.common');
 const devConfig = {
     mode: 'development',
     output: {
-        publicPath: 'http://localhost:8081/'
+        publicPath: 'http://localhost:8082/'
     },
     devServer: {
-        port: 8081,
-        historyApiFallback: true
+        port: 8082,
+        historyApiFallback: true,
         // historyApiFallback: {
         //     index: 'index.html'
         // }
@@ -19,19 +19,11 @@ const devConfig = {
     plugins: [
         
         new ModuleFederationPlugin({
-            name: 'marketing',
+            name: 'auth',
             filename: 'remoteEntry.js',
             exposes: {
-                './MarketingApp': './src/bootstrap.js'
+                './AuthApp': './src/bootstrap.js'
             },
-            // shared: {
-            //     react: {
-            //         singleton: true
-            //     },
-            //     'react-dom': {
-            //         singleton: true
-            //     }
-            // }
             shared: packageJSON.dependencies
         })
     ]

@@ -1,15 +1,12 @@
 import React from 'react';
 import { Switch, Route, Router } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
-
-import Landing from './components/Landing';
-import Pricing from './components/Pricing';
-import Posts from './components/Posts';
-import Users from './components/Users';
+import Signin from './components/Signin';
+import Signup from './components/SignUp'
 
 // This is to avoid same className collision between microFrontneds || containers
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'ma' // ma stands for marketing
+  productionPrefix: 'auth' // auth stands for Auth module
 });
 
 export default ({history}) => {
@@ -18,10 +15,8 @@ export default ({history}) => {
       <StylesProvider generateClassName={generateClassName}>
         <Router history={history}>
           <Switch>
-            <Route exact path="/pricing" component={Pricing} />
-            <Route exact path="/posts" component={Posts} />
-            <Route exact path="/users" component={Users} />
-            <Route path="/" component={Landing} />
+            <Route exact path="/auth/signin" component={Signin} />
+            <Route exact path="/auth/signup" component={Signup} />
           </Switch>
         </Router>
       </StylesProvider>

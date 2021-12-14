@@ -155,6 +155,14 @@ export default function Pricing() {
         >
           Pricing
         </Typography>
+        <Button
+          component={RouterLink}
+          to="/"
+          fullWidth
+          color="primary"
+        >
+          Home
+        </Button>
         <Typography
           variant="h5"
           align="center"

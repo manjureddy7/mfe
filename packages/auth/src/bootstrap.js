@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import App from './App';
-import { Provider } from "react-redux";
-import { store } from './store';
 
 // Mount function to start the app
 const mount = (el, { onNavigate, defaultHistory, initialpath }) => {
@@ -13,7 +11,7 @@ const mount = (el, { onNavigate, defaultHistory, initialpath }) => {
     // If we use BroswerHistory we will see the changes in the url path
 
     const history = defaultHistory || createMemoryHistory({
-        initialEntries: [initialpath] // Initial path will be useful on page refresh to get to the correct path
+        initialEntries: [initialpath]
     });
 
     if(onNavigate) {
@@ -21,9 +19,7 @@ const mount = (el, { onNavigate, defaultHistory, initialpath }) => {
     };
 
     ReactDOM.render(
-        <Provider store={store}>
-            <App history={history} />
-        </Provider>,
+        <App history={history} />,
         el
     );
     
@@ -41,7 +37,7 @@ const mount = (el, { onNavigate, defaultHistory, initialpath }) => {
 // Case: 1 Development & Isolation mount immediately
 
 if(process.env.NODE_ENV === 'development') {
-    const el = document.querySelector('#marketing');
+    const el = document.querySelector('#auth-dev');
     if(el) {
       mount(el, {
           defaultHistory: createBrowserHistory()
