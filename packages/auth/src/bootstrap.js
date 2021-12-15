@@ -4,7 +4,7 @@ import { createMemoryHistory, createBrowserHistory } from "history";
 import App from './App';
 
 // Mount function to start the app
-const mount = (el, { onNavigate, defaultHistory, initialpath }) => {
+const mount = (el, { onNavigate, defaultHistory, initialpath, onSignIn }) => {
 
     // In isolation we want BroswerHistory & in under container we want MemoryHistory
     // MemoryHistory doesn't show anything on the browser when the url changes
@@ -19,7 +19,7 @@ const mount = (el, { onNavigate, defaultHistory, initialpath }) => {
     };
 
     ReactDOM.render(
-        <App history={history} />,
+        <App history={history} onSignIn={onSignIn} />,
         el
     );
     
